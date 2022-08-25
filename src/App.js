@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import './App.css';
 import fire from "./fire";
-import Hero from "./Hero";
+import Menu from "./Menu";
 import Login from "./Login";
 
 function App() {
@@ -57,6 +57,8 @@ function App() {
                     case "auth/weak-password":
                         setPasswordError(err.message)
                         break;
+                    default:
+                        break;
                 }
             })
     }
@@ -81,12 +83,12 @@ function App() {
 
     useEffect(() => {
         authListener();
-    }, [])
+    })
 
     return (
         <div className="App">
             {user ? (
-                <Hero handleLogout={handleLogout}/>
+                <Menu handleLogout={handleLogout}/>
             ) : (
                 <Login
                     email={email}
